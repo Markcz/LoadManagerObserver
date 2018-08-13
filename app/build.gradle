@@ -1,0 +1,51 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 26
+    buildToolsVersion "27.0.1"
+    defaultConfig {
+        applicationId "com.chenzhen.loadmanagerobserver"
+        minSdkVersion 18
+        targetSdkVersion 22
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    dexOptions {
+        jumboMode true
+    }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    compile 'com.android.support:appcompat-v7:26.0.1'
+    compile 'com.android.support:support-v4:26.0.1'
+    compile 'com.android.support:design:26.0.1'
+
+
+    //底部Tab栏
+    compile 'com.ashokvarma.android:bottom-navigation-bar:2.0.4'
+
+    //lottie 动画
+    compile 'com.airbnb.android:lottie:2.5.4'
+
+    testCompile 'junit:junit:4.12'
+}
+
+configurations.all {
+    resolutionStrategy {
+        force 'com.android.support:design:26.0.1'
+        force 'com.android.support:support-v4:26.0.1'
+        force 'com.android.support:appcompat-v7:26.0.1'
+    }
+}
